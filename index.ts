@@ -26,6 +26,7 @@ async function getSchedule(user: string) {
     ],
     { headers: { "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko" } }
   );
+  if (!response.data[0].data.user.channel.schedule.segments) return;
   for (const s of response.data[0].data.user.channel.schedule.segments) {
     if (!schedule[s.startAt.substr(0, 10)]) {
       schedule[s.startAt.substr(0, 10)] = [];
